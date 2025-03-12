@@ -13,7 +13,7 @@
 				"/Fd${fileDirname}\\bin\\${fileBasenameNoExtension}.pdb",
 				"/Fo${fileDirname}\\bin\\${fileBasenameNoExtension}.obj",
 				"${file}",
-				"/link ${fileDirname}\\lib\\CH367DLL64.lib",
+				"/link ${fileDirname}\\lib\\CH367DLL.lib",
 			],
 			"options": {
 				"cwd": "${fileDirname}"

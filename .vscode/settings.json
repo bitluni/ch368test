@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"ch367dll.h": "c"
+		"ch367dll.h": "c",
+		"DEBUG368.C": "cpp",
+		"SUB.C": "cpp",
+		"CH367DLL.H": "cpp"
 	}
 }
