@@ -16,18 +16,18 @@ int main()
 	printf("driver ver %lu\n", ver);
 	mPCH368_MEM_REG memReg;
 	CH368mGetMemBaseAddr(0, &memReg);
-	printf("mem base address: %lu\n", (unsigned long)memReg);
-//	CH368mWriteMemDword(0, memReg + 0xFB, 0b10101010101010101010101010101010);  
+	printf("mem base address: %lu\n", (unsigned long)memReg); 
 	mPCH367_IO_REG ioAddr;
 	CH367mGetIoBaseAddr(0, &ioAddr);
 	printf("io base address: %lu\n", (unsigned long)ioAddr);
-	UCHAR b = 0xfe;
-	for(int i = 0; i < 100; i++)
+	ULONG32 d = 1;
+	CH367mWriteIoByte(0, 0xFA, 0b1000000);	//setting IO to 32bit (and fastest hold rate 40ns)
+	for(int i = 0; i < 256*256*256; i++)
 	{
-		CH367mWriteIoByte(0, /*&ioAddr +*/ 0, b);
-//		CH367mWriteIoByte(0, &ioAddr->mCH367GPOR, 0xff);
-		b = (b << 1) | (b >> 7);
-		CH367DelayUS(100000);
+		CH367mWriteIoDword(0, 0x0, 0xffffffff);
+		CH367mWriteIoDword(0, 0x0, 0x0);
+		CH367mWriteIoDword(0, 0x0, 0xffff0000);
+		CH367mWriteIoDword(0, 0x0, 0x0);
 	}
 
 	CH367mCloseDevice(0);
